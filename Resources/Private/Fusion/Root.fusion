@@ -1,0 +1,28 @@
+prototype(Neos.NodeTypes:Image) {
+    sectionName = 'Main'
+    templatePath = 'resource://Onedrop.ImageSrcset/Private/Templates/NodeTypes/Image.html'
+
+    @context.config = ${Configuration.setting('Onedrop.ImageSrcset')}
+    @context.asset = ${q(node).property('image')}
+
+    maximumWidth = ${config.maxSize}
+    maximumHeight = ${config.maxSize}
+
+    srcset = Neos.Fusion:Collection {
+        collection = ${config.sizes}
+        itemName = 'size'
+        itemRenderer = Neos.Neos:ImageUri {
+            asset = ${asset}
+            maximumWidth = ${size}
+            maximumHeight = ${size}
+            @process.wrapSrc = ${value + ' ' + size + 'w' + (iterator.isLast ? '' : ', ')}
+        }
+    }
+
+    sizes = ${'(max-width: ' + config.maxSize + 'px) 100vw, ' + config.maxSize + 'px'}
+}
+
+prototype(Neos.NodeTypes:TextWithImage) {
+    sectionName = 'Main'
+    templatePath = 'resource://Onedrop.ImageSrcset/Private/Templates/NodeTypes/TextWithImage.html'
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3Fluid/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/Neos/Neos/ViewHelpers"
+      xmlns:media="http://typo3.org/ns/Neos/Media/ViewHelpers">
+<body>
+<f:section name="Main">
+    <div{attributes -> f:format.raw()}>
+        <f:render partial="Image" arguments="{_all}" section="Main"/>
+        {neos:contentElement.editable(property: 'text')}
+    </div>
+</f:section>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3Fluid/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/Neos/Neos/ViewHelpers"
+      xmlns:media="http://typo3.org/ns/Neos/Media/ViewHelpers">
+<body>
+<f:section name="Main">
+    <f:if condition="{hasCaption}">
+        <f:then>
+            <figure{f:if(condition: imageClassName, then: ' class="{imageClassName}"')}>
+                <f:render partial="SimpleImage" arguments="{_all}" section="Main"/>
+                <figcaption>
+                    {neos:contentElement.editable(property: 'caption', node: node)}
+                </figcaption>
+            </figure>
+        </f:then>
+        <f:else>
+            <f:render partial="SimpleImage" arguments="{_all}" section="Main"/>
+        </f:else>
+    </f:if>
+</f:section>
+</body>
+</html>

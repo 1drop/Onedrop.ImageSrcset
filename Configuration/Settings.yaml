@@ -1,0 +1,14 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Onedrop.ImageSrcset: true
+Onedrop:
+  ImageSrcset:
+    maxSize: 2560   # maximum image size (should generally be identical with the largest value in the sizes array)
+    sizes:          # dynamic array of sizes generated for the srcset attribute
+      full: 2560
+      large: 1280
+      medium: 768
+      small: 420
+      tiny: 240

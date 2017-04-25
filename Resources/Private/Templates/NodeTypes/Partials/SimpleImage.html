@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3Fluid/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/Neos/Neos/ViewHelpers"
+      xmlns:media="http://typo3.org/ns/Neos/Media/ViewHelpers">
+<body>
+<f:section name="Main">
+    <f:if condition="{image}">
+        <f:then>
+            <f:if condition="{link}">
+                <f:then>
+                    <a href="{link}">
+                        <f:render section="ImageRendering" arguments="{_all}"/>
+                    </a>
+                </f:then>
+                <f:else>
+                    <f:render section="ImageRendering" arguments="{_all}"/>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{neos:rendering.inEditMode()}">
+                <img src="{f:uri.resource(package: 'Neos.Neos', path: 'Images/dummy-image.svg')}"
+                     title="Dummy image"
+                     alt="Dummy image"
+                     class="neos-handle"/>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:section>
+<f:section name="ImageRendering">
+    <media:image image="{image}"
+                 alt="{alternativeText}"
+                 title="{title}"
+                 class="{f:if(condition: imageClassName, then: '', else: '{imageClassName}')}"
+                 width="{width}"
+                 height="{height}"
+                 maximumWidth="{maximumWidth}"
+                 maximumHeight="{maximumHeight}"
+                 allowUpScaling="{allowUpScaling}"
+                 allowCropping="{allowCropping}"
+                 additionalAttributes="{'srcset': '{srcset}', 'sizes': '{sizes}'}"/>
+</f:section>
+</body>
+</html>
