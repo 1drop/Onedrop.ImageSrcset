@@ -4,9 +4,7 @@ prototype(Neos.NodeTypes:Image) {
 
     @context.config = ${Configuration.setting('Onedrop.ImageSrcset')}
     @context.asset = ${q(node).property('image')}
-
-    maximumWidth = ${config.maxSize}
-    maximumHeight = ${config.maxSize}
+    @context.maximumWidth = ${this.maximumWidth}
 
     srcset = Neos.Fusion:Collection {
         collection = ${config.sizes}
@@ -15,11 +13,11 @@ prototype(Neos.NodeTypes:Image) {
             asset = ${asset}
             maximumWidth = ${size}
             maximumHeight = ${size}
-            @process.wrapSrc = ${value + ' ' + size + 'w' + (iterator.isLast ? '' : ', ')}
+            @process.wrapSrc = ${(size <= maximumWidth ? (value + ' ' + size + 'w' + (iterator.isLast ? '' : ', ')) : '')}
         }
     }
 
-    sizes = ${'(max-width: ' + config.maxSize + 'px) 100vw, ' + config.maxSize + 'px'}
+    sizes = ${'(max-width: ' + maximumWidth + 'px) 100vw, ' + maximumWidth + 'px'}
 }
 
 prototype(Neos.NodeTypes:TextWithImage) {

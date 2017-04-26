@@ -15,7 +15,6 @@ The following default values are provided by the plugin:
 
     Onedrop:
       ImageSrcset:
-        maxSize: 2560   # maximum image size (should generally be identical with the largest value in the sizes array)
         sizes:          # dynamic array of sizes generated for the srcset attribute
           full: 2560
           large: 1280
@@ -23,4 +22,4 @@ The following default values are provided by the plugin:
           small: 420
           tiny: 240
 
-Feel free to adjust sizes array to your specific needs.
+Feel free to add or remove sizes according to your specific needs.
