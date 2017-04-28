@@ -6,5 +6,10 @@
     "require": {
         "neos/neos": "~3.0.0",
         "neos/nodetypes": "~3.0.0"
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Onedrop.ImageSrcset"
+        }
     }
 }
