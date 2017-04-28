@@ -3,14 +3,13 @@ prototype(Neos.NodeTypes:Image) {
     templatePath = 'resource://Onedrop.ImageSrcset/Private/Templates/NodeTypes/Image.html'
 
     @context.config = ${Configuration.setting('Onedrop.ImageSrcset')}
-    @context.asset = ${q(node).property('image')}
     @context.maximumWidth = ${this.maximumWidth}
 
     srcset = Neos.Fusion:Collection {
         collection = ${config.sizes}
         itemName = 'size'
         itemRenderer = Neos.Neos:ImageUri {
-            asset = ${asset}
+            asset = ${q(node).property('image')}
             maximumWidth = ${size}
             maximumHeight = ${size}
             @process.wrapSrc = ${(size <= maximumWidth ? (value + ' ' + size + 'w' + (iterator.isLast ? '' : ', ')) : '')}
