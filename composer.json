@@ -4,8 +4,8 @@
     "name": "onedrop/imagesrcset",
     "description": "Adds responsive image sizes via the the srcset attribute to the default NodeTypes",
     "require": {
-        "neos/neos": "~3.0.0",
-        "neos/nodetypes": "~3.0.0"
+        "neos/neos": "~3.0",
+        "neos/nodetypes": "~3.0"
     },
     "extra": {
         "neos": {
