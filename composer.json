@@ -10,6 +10,9 @@
     "extra": {
         "neos": {
             "package-key": "Onedrop.ImageSrcset"
-        }
+        },
+        "applied-flow-migrations": [
+            "TYPO3.FLOW3-201201261636"
+        ]
     }
 }
